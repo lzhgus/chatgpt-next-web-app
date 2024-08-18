@@ -46,12 +46,12 @@ export const DEFAULT_CONFIG = {
   dontShowMaskSplashScreen: false, // dont show splash screen when create chat
   hideBuiltinMasks: false, // dont add builtin masks
 
-  customModels: "",
+  customModels: "gpt-4@azure=gpt-4",
   models: DEFAULT_MODELS as any as LLMModel[],
 
   modelConfig: {
-    model: "gpt-3.5-turbo" as ModelType,
-    providerName: "OpenAI" as ServiceProvider,
+    model: "gpt-4" as ModelType,
+    providerName: "Azure" as ServiceProvider,
     temperature: 0.5,
     top_p: 1,
     max_tokens: 4000,

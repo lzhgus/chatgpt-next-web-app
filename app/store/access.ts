@@ -59,16 +59,16 @@ const DEFAULT_ACCESS_STATE = {
   accessCode: "",
   useCustomConfig: false,
 
-  provider: ServiceProvider.OpenAI,
+  provider: ServiceProvider.Azure,
 
   // openai
   openaiUrl: DEFAULT_OPENAI_URL,
   openaiApiKey: "",
 
   // azure
-  azureUrl: "",
+  azureUrl: "https://zli-open-ai-eus.openai.azure.com/openai",
   azureApiKey: "",
-  azureApiVersion: "2023-08-01-preview",
+  azureApiVersion: "2024-04-01-preview",
 
   // google ai studio
   googleUrl: DEFAULT_GOOGLE_URL,
@@ -118,8 +118,8 @@ const DEFAULT_ACCESS_STATE = {
   hideBalanceQuery: false,
   disableGPT4: false,
   disableFastLink: false,
-  customModels: "",
-  defaultModel: "",
+  customModels: "gpt-4@azure=gpt-4",
+  defaultModel: "gpt-4",
 };
 
 export const useAccessStore = createPersistStore(
@@ -205,7 +205,7 @@ export const useAccessStore = createPersistStore(
           // Set default model from env request
           let defaultModel = res.defaultModel ?? "";
           DEFAULT_CONFIG.modelConfig.model =
-            defaultModel !== "" ? defaultModel : "gpt-3.5-turbo";
+            defaultModel !== "" ? defaultModel : "gpt-4";
           return res;
         })
         .then((res: DangerConfig) => {
